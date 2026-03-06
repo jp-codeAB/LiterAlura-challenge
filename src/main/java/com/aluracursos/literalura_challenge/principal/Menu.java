@@ -1,5 +1,7 @@
 package com.aluracursos.literalura_challenge.principal;
 
+import com.aluracursos.literalura_challenge.model.DataBook;
+import com.aluracursos.literalura_challenge.model.DataResults;
 import com.aluracursos.literalura_challenge.service.APIConsumer;
 import com.aluracursos.literalura_challenge.service.DataConverter;
 
@@ -20,7 +22,12 @@ public class Menu {
                           Bienvenido a LiterAlura
                           
             Seleccione la opción que desea realizar 📚
-            1.- buscar un libro por titulo.
+            1 - Buscar libro por título
+            2 - Listar libros registrados
+            3 - Listar autores registrados
+            4 - Listar autores vivos en un determinado año
+            5 - Listar libros por idioma
+            0 - Salir
             
             """;
             System.out.println(menu);
@@ -43,7 +50,16 @@ public class Menu {
         System.out.println("Ingrese el titulo del libro: ");
         String title = sc.nextLine();
         json = apiConsumer.obtenerDatos(URL_BASE+"?search="+title.replace(" ", "+"));
-        System.out.println(json);
+        //System.out.println(json);
+        DataBook dataBook = getBookData(title);
+        System.out.println(dataBook);
+    }
+
+    private DataBook getBookData(String title) {
+        DataResults results = dataConverter.obtenerDatos(json, DataResults.class);
+        return results.libros().stream()
+                .filter(b -> b.titulo().toUpperCase().contains(title.toUpperCase()))
+                .findFirst().orElse(null);
     }
 
 }
