@@ -8,7 +8,7 @@ public record AuthorData(
         @JsonAlias("name")
         String nombre,
         @JsonAlias("birth_year")
-        Integer nacimeinto,
+        Integer nacimiento,
         @JsonAlias("death_year")
         Integer fallecimiento
 ){
