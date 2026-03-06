@@ -1,11 +1,9 @@
 package com.aluracursos.literalura_challenge;
 
-
 import com.aluracursos.literalura_challenge.principal.Menu;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 
 @SpringBootApplication
 public class LiteraluraChallengeApplication implements CommandLineRunner {
