@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DataResults(
+public record ResultsData(
 //        @JsonAlias("count") Integer total,
 //        @JsonAlias("next") String next,
 //        @JsonAlias("previous") String prev,
-        @JsonAlias("results") List<DataBook> libros
+        @JsonAlias("results") List<BookData> libros
 ) {
 }
