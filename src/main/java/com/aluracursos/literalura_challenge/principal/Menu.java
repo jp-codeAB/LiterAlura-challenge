@@ -8,10 +8,14 @@ import java.util.Scanner;
 public class Menu {
     private Scanner sc = new Scanner(System.in);
     private APIConsumer apiConsumer = new APIConsumer();
-    private static final String URL_BASE = "https://gutendex.com/books";
-    private DataConverter convierteDatos = new DataConverter();
+    private static final String URL_BASE = "https://gutendex.com/books/";
+    private DataConverter dataConverter = new DataConverter();
+    private String json;
 
-    private String menu = """
+    public void mostrarMenu(){
+        var opcion = -1;
+        while (opcion !=0){
+            var menu = """
             --------------------------------------------------
                           Bienvenido a LiterAlura
                           
@@ -19,12 +23,27 @@ public class Menu {
             1.- buscar un libro por titulo.
             
             """;
+            System.out.println(menu);
+            opcion = sc.nextInt();
+            sc.nextLine();
 
-    private void mostrarMenu(){
-        System.out.println(menu);
+            switch (opcion){
+                case 1:
+                    buscarLibroPorTItulo();
+                    break;
+                case 2:
+                default:
+                    System.out.println("Opcion Invalida");
+            }
+        }
+
     }
 
-    public void run(){
-        mostrarMenu();
+    private void buscarLibroPorTItulo() {
+        System.out.println("Ingrese el titulo del libro: ");
+        String title = sc.nextLine();
+        json = apiConsumer.obtenerDatos(URL_BASE+"?search="+title.replace(" ", "+"));
+        System.out.println(json);
     }
+
 }
