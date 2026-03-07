@@ -1,12 +1,12 @@
 package com.aluracursos.literalura_challenge.principal;
 
-import com.aluracursos.literalura_challenge.model.BookData;
-import com.aluracursos.literalura_challenge.model.ResultsData;
+import com.aluracursos.literalura_challenge.model.*;
 import com.aluracursos.literalura_challenge.repository.AuthorRepository;
 import com.aluracursos.literalura_challenge.repository.BookRepository;
 import com.aluracursos.literalura_challenge.service.APIConsumer;
 import com.aluracursos.literalura_challenge.service.DataConverter;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Menu {
@@ -53,6 +53,34 @@ public class Menu {
     }
 
     private void buscarLibroWeb() {
+        System.out.println("Ingrese el título del Libro que deseas buscar:");
+        var titulo = sc.nextLine();
+        String json = apiConsumer.obtenerDatos(URL_BASE + "?search=" + titulo.replace(" ", "+"));
+        var datos = dataConverter.obtenerDatos(json, ResultsData.class);
+
+        Optional<BookData> libroBuscado = datos.libros().stream()
+                .filter(l -> l.titulo().toUpperCase().contains(titulo.toUpperCase()))
+                .findFirst();
+
+        if (libroBuscado.isPresent()) {
+            BookData d = libroBuscado.get();
+            // Lógica de persistencia
+            if (bookRepo.findByTituloContainsIgnoreCase(d.titulo()).isPresent()) {
+                System.out.println("El libro ya está registrado.");
+            } else {
+                BookEntity libro = new BookEntity(d);
+                AuthorData dAutor = d.autor().get(0);
+                // Buscar si el autor ya existe para no duplicarlo
+                AuthorEntity autor = authorRepo.findByNombreContainsIgnoreCase(dAutor.nombre())
+                        .orElseGet(() -> authorRepo.save(new AuthorEntity(dAutor)));
+
+                libro.setAutor(autor);
+                bookRepo.save(libro);
+                System.out.println(libro);
+            }
+        } else {
+            System.out.println("Libro no encontrado.");
+        }
     }
 
     private void listarLibros() {
