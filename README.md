@@ -1,5 +1,5 @@
 # 📚 LiterAlura - Challenge Alura Latam
-
+![literature](./img/img.png)
 ##  Descripción del Proyecto
 **LiterAlura** es un catálogo de libros interactivo que permite la gestión de literatura mediante el consumo de la API de **Gutendex**. El sistema permite buscar libros por título, persistirlos en una base de datos relacional y realizar consultas avanzadas sobre autores y sus obras. 
 
@@ -77,3 +77,5 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
+##📂 Estructura de Carpetas
+![carpetas](./img/carpetas.png)
