@@ -1,5 +1,6 @@
 # 📚 LiterAlura - Challenge Alura Latam
 ![literature](./img/img.png)
+
 ##  Descripción del Proyecto
 **LiterAlura** es un catálogo de libros interactivo que permite la gestión de literatura mediante el consumo de la API de **Gutendex**. El sistema permite buscar libros por título, persistirlos en una base de datos relacional y realizar consultas avanzadas sobre autores y sus obras. 
 
@@ -7,7 +8,7 @@ El enfoque principal es la aplicación de la **Programación Orientada a Objetos
 
 ---
 
-## 2. Metodología de Trabajo
+## Metodología de Trabajo
 Se utilizó la metodología **Kanban** para la gestión ágil del proyecto, permitiendo un flujo de trabajo continuo y visual.
 
 * **🗂 Herramienta utilizada:** [Trello](https://trello.com/b/WDyMPDMb/literalura-challenge-java)
@@ -19,7 +20,7 @@ Se utilizó la metodología **Kanban** para la gestión ágil del proyecto, perm
 
 ---
 
-## 3. Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### 🛠 Stack Tecnológico
 | Tecnología | Versión / Detalle |
@@ -60,7 +61,6 @@ dependencies {
 ## 🏗 Arquitectura del Proyecto
 
 El sistema sigue una arquitectura desacoplada en capas:
-
 Cada capa tiene una responsabilidad clara:
 
 | Capa | Responsabilidad |
@@ -71,7 +71,7 @@ Cada capa tiene una responsabilidad clara:
 | `Client` | Manejo de la comunicación HTTP externa a través de la clase 'APIConsumer'. |
 | `model` | RDefinición de Entidades JPA ('BookEntity', 'AuthorEntity') para persistencia y Records ('BookData', 'AuthorData') para el mapeo de la API. |
 
-##Configuración de 'application.yml'
+## Configuración de 'application.yml'
 ```
 spring:
   application:
@@ -92,13 +92,17 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 ```
-##📂 Estructura de Carpetas
+
+## 📂Estructura de Carpetas
 
 ![carpetas](./img/carpetas.png)
 
-🌍 API Utilizada
+## 🌍 API Utilizada
 El proyecto consume la API de 'Gutendex', un catálogo abierto que proporciona acceso a los libros del Proyecto Gutenberg.
 
 Endpoint Base: 'https://gutendex.com/books/'
 Método de Búsqueda: Se utiliza el parámetro '?search=' para filtrar por título o autor.
 Formato de Datos: JSON estructurado con soporte para paginación y filtrado por metadatos.
+
+## Sistema En Ejecucion
+1 
