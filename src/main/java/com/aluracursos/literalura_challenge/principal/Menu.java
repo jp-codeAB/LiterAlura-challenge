@@ -33,12 +33,12 @@ public class Menu {
         while (opcion != 0) {
             System.out.println("""
             --------------------------------------------------
-                          Bienvenido a LiterAlura 📚
+                          Bienvenido a LiterAlura 
             --------------------------------------------------
             1 - Buscar libro por titulo
             2 - Listar libros registrados
             3 - Listar autores registrados
-            4 - Listar autores vivos en determinado año
+            4 - Listar autores vivos en determinado anio
             5 - Listar libros por idioma
             0 - Salir
             """);
@@ -58,7 +58,7 @@ public class Menu {
     }
 
     private void buscarLibroWeb() {
-        System.out.println("Ingrese el título del Libro que deseas buscar:");
+        System.out.println("Ingrese el titulo del Libro que deseas buscar:");
         var titulo = sc.nextLine();
         String json = apiConsumer.obtenerDatos(URL_BASE + "?search=" + titulo.replace(" ", "+"));
         var datos = dataConverter.obtenerDatos(json, ResultsData.class);
@@ -71,7 +71,7 @@ public class Menu {
             BookData d = libroBuscado.get();
             // Lógica de persistencia
             if (bookRepo.findByTituloContainsIgnoreCase(d.titulo()).isPresent()) {
-                System.out.println("El libro ya está registrado.");
+                System.out.println("El libro ya esta registrado.");
             } else {
                 BookEntity libro = new BookEntity(d);
                 AuthorData dAutor = d.autor().get(0);
@@ -97,7 +97,7 @@ public class Menu {
     }
 
     private void autoresVivosPorAnio() {
-        System.out.println("Ingrese el año:");
+        System.out.println("Ingrese el anio:");
         var anio = sc.nextInt();
         authorRepo.findAutoresVivosEnAnio(anio).forEach(System.out::println);
     }
