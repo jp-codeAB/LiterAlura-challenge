@@ -52,20 +52,18 @@ public class Menu {
         }
     }
 
-    private void buscarLibroPorTItulo() {
-        System.out.println("Ingrese el titulo del libro: ");
-        String title = sc.nextLine();
-        json = apiConsumer.obtenerDatos(URL_BASE+"?search="+title.replace(" ", "+"));
-        //System.out.println(json);
-        BookData dataBook = getBookData(title);
-        System.out.println(dataBook);
+    private void buscarLibroWeb() {
     }
 
-    private BookData getBookData(String title) {
-        ResultsData results = dataConverter.obtenerDatos(json, ResultsData.class);
-        return results.libros().stream()
-                .filter(b -> b.titulo().toUpperCase().contains(title.toUpperCase()))
-                .findFirst().orElse(null);
+    private void listarLibros() {
     }
 
+    private void listarAutores() {
+    }
+
+    private void autoresVivosPorAnio() {
+    }
+
+    private void listarLibrosPorIdioma() {
+    }
 }
