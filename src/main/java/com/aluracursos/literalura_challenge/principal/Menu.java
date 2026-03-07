@@ -5,10 +5,13 @@ import com.aluracursos.literalura_challenge.repository.AuthorRepository;
 import com.aluracursos.literalura_challenge.repository.BookRepository;
 import com.aluracursos.literalura_challenge.service.APIConsumer;
 import com.aluracursos.literalura_challenge.service.DataConverter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class Menu {
     private Scanner sc = new Scanner(System.in);
     private APIConsumer apiConsumer = new APIConsumer();
@@ -18,10 +21,12 @@ public class Menu {
     private BookRepository bookRepo;
     private AuthorRepository authorRepo;
 
+    @Autowired
     public Menu(BookRepository br, AuthorRepository ar) {
         this.bookRepo = br;
         this.authorRepo = ar;
     }
+
 
     public void mostrarMenu(){
         var opcion = -1;
@@ -30,7 +35,7 @@ public class Menu {
             --------------------------------------------------
                           Bienvenido a LiterAlura 📚
             --------------------------------------------------
-            1 - Buscar libro por título (API y Guardar)
+            1 - Buscar libro por titulo
             2 - Listar libros registrados
             3 - Listar autores registrados
             4 - Listar autores vivos en determinado año
@@ -98,5 +103,9 @@ public class Menu {
     }
 
     private void listarLibrosPorIdioma() {
+        System.out.println("Idiomas disponibles: es, en, fr, pt");
+        var iso = sc.nextLine();
+        Languaje idioma = Languaje.fromString(iso);
+        bookRepo.findByIdioma(idioma).forEach(System.out::println);
     }
 }
