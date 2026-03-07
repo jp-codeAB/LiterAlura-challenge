@@ -57,6 +57,22 @@ dependencies {
 }
 ```
 
+## 🏗 Arquitectura del Proyecto
+
+El sistema sigue una arquitectura desacoplada en capas:
+
+Cada capa tiene una responsabilidad clara:
+
+| Capa | Responsabilidad |
+|------|----------------|
+| `Main` | Punto de entrada de la aplicación (CommandLineRunner). Orquestación del menú y captura de datos del usuario. |
+| `service` | Lógica de procesamiento de datos, incluyendo el convertidor de JSON (DataConverter) y la gestión de reglas de negocio. |
+| `repository` | Interfaces que extienden de JpaRepository para realizar operaciones CRUD y consultas personalizadas en PostgreSQL. |
+| `Client` | Manejo de la comunicación HTTP externa a través de la clase APIConsumer. |
+| `model` | RDefinición de Entidades JPA (BookEntity, AuthorEntity) para persistencia y Records (BookData, AuthorData) para el mapeo de la API. |
+
+
+
 ##Configuración de Base de Datos
 spring:
   application:
@@ -79,3 +95,4 @@ spring:
 
 ##📂 Estructura de Carpetas
 ![carpetas](./img/carpetas.png)
+
