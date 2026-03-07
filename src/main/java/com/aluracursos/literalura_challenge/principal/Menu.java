@@ -42,8 +42,18 @@ public class Menu {
             5 - Listar libros por idioma
             0 - Salir
             """);
-            opcion = sc.nextInt();
-            sc.nextLine();
+            try {
+                var entrada = sc.nextLine(); // Leemos como String para evitar errores de buffer
+                opcion = Integer.parseInt(entrada); // Intentamos convertir a número
+            } catch (NumberFormatException e) {
+                System.out.println("""
+                
+                ⚠ ERROR: Por favor, ingrese un número válido del 0 al 5.
+                No se permiten letras o caracteres especiales.
+                """);
+                opcion = -1;
+                continue;
+            }
 
             switch (opcion) {
                 case 1 -> buscarLibroWeb();

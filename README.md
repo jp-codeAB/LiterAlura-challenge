@@ -61,6 +61,7 @@ dependencies {
 ## 🏗 Arquitectura del Proyecto
 
 El sistema sigue una arquitectura desacoplada en capas:
+
 Cada capa tiene una responsabilidad clara:
 
 | Capa | Responsabilidad |
@@ -101,8 +102,24 @@ spring:
 El proyecto consume la API de 'Gutendex', un catálogo abierto que proporciona acceso a los libros del Proyecto Gutenberg.
 
 Endpoint Base: 'https://gutendex.com/books/'
+
 Método de Búsqueda: Se utiliza el parámetro '?search=' para filtrar por título o autor.
+
 Formato de Datos: JSON estructurado con soporte para paginación y filtrado por metadatos.
 
 ## Sistema En Ejecucion
-1 
+
+1 Buscar libro por título
+![buscarlibro](./img/opcion1.png)
+
+2 - Listar libros registrados
+![librosRegistrados](./img/opcion2.png)
+3 - Listar autores registrados
+![autoresRegistrados](./img/opcion3.png)
+4 - Listar autores vivos en determinado año
+![autoresVivos](./img/opcion4.png)
+5 - Listar libros por idioma
+![idioma](./img/opcion5.png)
+
+NumberFormatException
+![exception](./img/exception.png)
