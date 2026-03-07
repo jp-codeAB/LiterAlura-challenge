@@ -65,15 +65,14 @@ Cada capa tiene una responsabilidad clara:
 
 | Capa | Responsabilidad |
 |------|----------------|
-| `Main` | Punto de entrada de la aplicación (CommandLineRunner). Orquestación del menú y captura de datos del usuario. |
-| `service` | Lógica de procesamiento de datos, incluyendo el convertidor de JSON (DataConverter) y la gestión de reglas de negocio. |
-| `repository` | Interfaces que extienden de JpaRepository para realizar operaciones CRUD y consultas personalizadas en PostgreSQL. |
-| `Client` | Manejo de la comunicación HTTP externa a través de la clase APIConsumer. |
-| `model` | RDefinición de Entidades JPA (BookEntity, AuthorEntity) para persistencia y Records (BookData, AuthorData) para el mapeo de la API. |
+| `Main` | Punto de entrada de la aplicación ('CommandLineRunner'). Orquestación del menú y captura de datos del usuario. |
+| `service` | Lógica de procesamiento de datos, incluyendo el convertidor de JSON ('DataConverter') y la gestión de reglas de negocio. |
+| `repository` | Interfaces que extienden de 'JpaRepository' para realizar operaciones CRUD y consultas personalizadas en 'PostgreSQL'. |
+| `Client` | Manejo de la comunicación HTTP externa a través de la clase 'APIConsumer'. |
+| `model` | RDefinición de Entidades JPA ('BookEntity', 'AuthorEntity') para persistencia y Records ('BookData', 'AuthorData') para el mapeo de la API. |
 
-
-
-##Configuración de Base de Datos
+##Configuración de 'application.yml'
+```
 spring:
   application:
     name: literalura-challenge
@@ -92,7 +91,14 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-
+```
 ##📂 Estructura de Carpetas
+
 ![carpetas](./img/carpetas.png)
 
+🌍 API Utilizada
+El proyecto consume la API de 'Gutendex', un catálogo abierto que proporciona acceso a los libros del Proyecto Gutenberg.
+
+Endpoint Base: 'https://gutendex.com/books/'
+Método de Búsqueda: Se utiliza el parámetro '?search=' para filtrar por título o autor.
+Formato de Datos: JSON estructurado con soporte para paginación y filtrado por metadatos.
