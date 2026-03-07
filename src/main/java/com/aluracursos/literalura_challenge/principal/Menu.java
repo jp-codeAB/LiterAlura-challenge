@@ -25,8 +25,8 @@ public class Menu {
 
     public void mostrarMenu(){
         var opcion = -1;
-        while (opcion !=0){
-            var menu = """
+        while (opcion != 0) {
+            System.out.println("""
             --------------------------------------------------
                           Bienvenido a LiterAlura 📚
             --------------------------------------------------
@@ -36,21 +36,20 @@ public class Menu {
             4 - Listar autores vivos en determinado año
             5 - Listar libros por idioma
             0 - Salir
-            """;
-            System.out.println(menu);
+            """);
             opcion = sc.nextInt();
             sc.nextLine();
 
-            switch (opcion){
-                case 1:
-                    buscarLibroPorTItulo();
-                    break;
-                case 2:
-                default:
-                    System.out.println("Opcion Invalida");
+            switch (opcion) {
+                case 1 -> buscarLibroWeb();
+                case 2 -> listarLibros();
+                case 3 -> listarAutores();
+                case 4 -> autoresVivosPorAnio();
+                case 5 -> listarLibrosPorIdioma();
+                case 0 -> System.out.println("Cerrando aplicación...");
+                default -> System.out.println("Opción no válida.");
             }
         }
-
     }
 
     private void buscarLibroPorTItulo() {
