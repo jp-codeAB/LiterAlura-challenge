@@ -109,17 +109,26 @@ Formato de Datos: JSON estructurado con soporte para paginación y filtrado por 
 
 ## Sistema En Ejecucion
 
-1 Buscar libro por título
+### 1 Buscar libro por título
+
 ![buscarlibro](./img/opcion1.png)
 
-2 - Listar libros registrados
+### 2 - Listar libros registrados
+
 ![librosRegistrados](./img/opcion2.png)
-3 - Listar autores registrados
+
+### 3 - Listar autores registrados
+
 ![autoresRegistrados](./img/opcion3.png)
-4 - Listar autores vivos en determinado año
+
+### 4 - Listar autores vivos en determinado año
+
 ![autoresVivos](./img/opcion4.png)
-5 - Listar libros por idioma
+
+### 5 - Listar libros por idioma
+
 ![idioma](./img/opcion5.png)
 
-NumberFormatException
+### NumberFormatException
+
 ![exception](./img/exception.png)
