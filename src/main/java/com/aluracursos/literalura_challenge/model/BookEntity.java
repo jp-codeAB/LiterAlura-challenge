@@ -11,7 +11,7 @@ public class BookEntity {
     @Column(unique = true)
     private String titulo;
     @Enumerated(EnumType.STRING)
-    private Idioma idioma;
+    private Languaje idioma;
     private Double descargas;
 
     @ManyToOne
@@ -21,7 +21,7 @@ public class BookEntity {
 
     public BookEntity(BookData data) {
         this.titulo = data.titulo();
-        this.idioma = Idioma.fromString(data.lenguajes().get(0));
+        this.idioma = Languaje.fromString(data.lenguajes().get(0));
         this.descargas = data.descargas();
     }
 
@@ -54,11 +54,11 @@ public class BookEntity {
         this.titulo = titulo;
     }
 
-    public Idioma getIdioma() {
+    public Languaje getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(Idioma idioma) {
+    public void setIdioma(Languaje idioma) {
         this.idioma = idioma;
     }
 
