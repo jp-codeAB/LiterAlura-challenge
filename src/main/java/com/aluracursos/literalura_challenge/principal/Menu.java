@@ -84,6 +84,7 @@ public class Menu {
     }
 
     private void listarLibros() {
+        bookRepo.findAll().forEach(System.out::println);
     }
 
     private void listarAutores() {
