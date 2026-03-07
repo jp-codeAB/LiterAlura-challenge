@@ -87,6 +87,10 @@ public class Menu {
         bookRepo.findAll().forEach(System.out::println);
     }
 
+    private void listarAutores() {
+        authorRepo.findAll().forEach(System.out::println);
+    }
+
     private void autoresVivosPorAnio() {
         System.out.println("Ingrese el año:");
         var anio = sc.nextInt();
